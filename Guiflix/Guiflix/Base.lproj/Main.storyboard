@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fB0-V2-anq">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favoritos-->
+        <scene sceneID="yKr-Yo-gVF">
+            <objects>
+                <viewController id="wMQ-MC-LM8" customClass="FavoritoViewController" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JQP-GI-9m5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cex-eK-eVQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favoritos" id="Zk1-DL-OKo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wz1-ad-dKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="87"/>
+        </scene>
+        <!--Filmes-->
+        <scene sceneID="kXL-Tj-cOM">
+            <objects>
+                <viewController id="YWz-YW-paN" customClass="FilmesViewController" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EB9-Bw-BXG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5Pr-oF-d6P"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Filmes" id="kF2-eV-9kk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBU-7b-iGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="-561"/>
+        </scene>
+        <!--Guiflix-->
+        <scene sceneID="Qvu-ww-vHB">
+            <objects>
+                <tabBarController title="Guiflix" id="fB0-V2-anq" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w7x-r3-i5W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YWz-YW-paN" kind="relationship" relationship="viewControllers" id="CbW-qL-EMK"/>
+                        <segue destination="wMQ-MC-LM8" kind="relationship" relationship="viewControllers" id="NtL-Yd-pZt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YL5-0q-u6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-915" y="-237"/>
+        </scene>
+    </scenes>
+</document>
