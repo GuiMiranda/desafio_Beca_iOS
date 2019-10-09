@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cex-eK-eVQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" id="Zk1-DL-OKo"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="favorite_black_36pt" id="Zk1-DL-OKo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wz1-ad-dKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5Pr-oF-d6P"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Filmes" id="kF2-eV-9kk"/>
+                    <tabBarItem key="tabBarItem" title="Filmes" image="movie_black_36pt" id="kF2-eV-9kk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBU-7b-iGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,6 +50,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="YWz-YW-paN" kind="relationship" relationship="viewControllers" id="CbW-qL-EMK"/>
@@ -61,4 +62,8 @@
             <point key="canvasLocation" x="-915" y="-237"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite_black_36pt" width="36" height="36"/>
+        <image name="movie_black_36pt" width="36" height="36"/>
+    </resources>
 </document>

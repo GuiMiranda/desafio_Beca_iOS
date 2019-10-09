@@ -10,21 +10,19 @@ import UIKit
 
 class FilmesViewController: UIViewController {
 
+    var filmesView : FilmesView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        filmesView = FilmesView(frame: view.frame)
+        if let v = filmesView {
+            self.view.addSubview(v)
+        }
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        filmesView?.lblFilme.text = "Sucesso!!!"
     }
-    */
 
 }
