@@ -10,13 +10,15 @@ import UIKit
 
 class FilmesView: UIView {
 
-    @IBOutlet weak var lblFilme: UILabel!
+    @IBOutlet weak var filmeTableView: UITableView!
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,6 +31,7 @@ class FilmesView: UIView {
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         
         addSubview(view)
+        
     }
     
 }

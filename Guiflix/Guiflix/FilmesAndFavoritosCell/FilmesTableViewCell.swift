@@ -14,15 +14,22 @@ class FilmesTableViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblYear: UILabel!
     
-    func setup() {
-        self.ivPoster.layer.cornerRadius = 5.0
-        self.ivPoster.layer.masksToBounds = true
+    var model: String = "Teste" {
+        didSet {
+            self.lblTitle?.text = model
+        }
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.setup()
+
+    }
+    
+    func setup(){
+//        self.lblTitle.text = "teste"
+//        self.ivPoster.image = UIImage()
+//        self.lblYear.text = "2020"
     }
     
 
