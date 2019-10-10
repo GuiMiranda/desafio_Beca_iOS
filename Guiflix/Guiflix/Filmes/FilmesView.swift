@@ -16,7 +16,7 @@ class FilmesView: UIViewController {
     
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
-//        commonInit()
+//        commonInit()
 //    }
     
     override func viewDidLoad() {
@@ -56,9 +56,8 @@ extension FilmesView: UITableViewDelegate, UITableViewDataSource {
         print("Entrou no cellForRowAt")
         guard let celula = filmeTableView.dequeueReusableCell(withIdentifier: identifier) as? FilmesTableViewCell else {fatalError()}
         print("Saiu do cellForRowAt")
-        celula.lblTitle.text = "Interstellar"
-        celula.lblYear.text = "2056"
-        celula.ivPoster.image = UIImage(named: "FilmeTeste")
+        let ano = 2000 + indexPath.row
+        celula.setup(filme: "Vingadores", imagem: "FilmeTeste", ano: String(ano))
         
         return celula
     }
