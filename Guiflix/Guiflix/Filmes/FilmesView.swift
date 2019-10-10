@@ -53,14 +53,18 @@ extension FilmesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Entrou no cellForRowAt")
         guard let celula = filmeTableView.dequeueReusableCell(withIdentifier: identifier) as? FilmesTableViewCell else {fatalError()}
-        print("Saiu do cellForRowAt")
         let ano = 2000 + indexPath.row
         celula.setup(filme: "Vingadores", imagem: "FilmeTeste", ano: String(ano))
         
         return celula
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Parabéns", message: "Você escolheu a linha de índice \(indexPath.row + 1)", preferredStyle: .alert)
+        let button = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(button)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
