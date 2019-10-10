@@ -8,15 +8,21 @@
 
 import UIKit
 
-class FavoritoView: UIView {
+class FavoritoView: UIViewController {
 
-    override init(frame: CGRect) {
+    /*verride init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        commonInit()
+    }*/
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         commonInit()
     }
 
@@ -25,7 +31,7 @@ class FavoritoView: UIView {
         let nib = UINib(nibName: "FavoritoView", bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         
-        addSubview(view)
+        self.view.addSubview(view)
     }
     
 }
