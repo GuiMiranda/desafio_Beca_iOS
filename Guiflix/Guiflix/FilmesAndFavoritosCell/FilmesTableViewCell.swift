@@ -23,7 +23,8 @@ class FilmesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        ivPoster.layer.cornerRadius = 5.0
+        ivPoster.layer.masksToBounds = true
     }
     
     func setup(){
