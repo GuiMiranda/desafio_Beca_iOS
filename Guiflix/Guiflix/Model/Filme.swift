@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Filme {
+struct Filme : Codable {
     var popularity: Double
     var vote_count: CLong
     var video: Bool
