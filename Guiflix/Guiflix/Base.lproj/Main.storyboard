@@ -15,7 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="JQP-GI-9m5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="cex-eK-eVQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favoritos" image="favorite_black_36pt" id="Zk1-DL-OKo"/>
@@ -31,10 +31,25 @@
                     <view key="view" contentMode="scaleToFill" id="EB9-Bw-BXG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdf-Cg-Sc8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jdf-Cg-Sc8" firstAttribute="leading" secondItem="5Pr-oF-d6P" secondAttribute="leading" id="48c-uK-eWj"/>
+                            <constraint firstItem="5Pr-oF-d6P" firstAttribute="trailing" secondItem="Jdf-Cg-Sc8" secondAttribute="trailing" id="Bdg-lR-cps"/>
+                            <constraint firstItem="5Pr-oF-d6P" firstAttribute="bottom" secondItem="Jdf-Cg-Sc8" secondAttribute="bottom" id="vtJ-WO-z0v"/>
+                            <constraint firstItem="Jdf-Cg-Sc8" firstAttribute="top" secondItem="5Pr-oF-d6P" secondAttribute="top" id="yex-sj-9Cd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Pr-oF-d6P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Filmes" image="movie_black_36pt" id="kF2-eV-9kk"/>
+                    <connections>
+                        <outlet property="filmesViewPrincipal" destination="Jdf-Cg-Sc8" id="ZkX-Um-sR1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBU-7b-iGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,6 +64,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="YWz-YW-paN" kind="relationship" relationship="viewControllers" id="CbW-qL-EMK"/>
