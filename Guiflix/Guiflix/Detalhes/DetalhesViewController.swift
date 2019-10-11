@@ -44,6 +44,11 @@ class DetalhesViewController: UIViewController {
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
         notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average!)/100)))
         sinopseTextField.text = filme.overview
+
+       // generoTextField.text = filme.genre.joined(separator: ",")
+
+//        generoTextField.text = filme.genre.joined(separator: ",")
+
         generoTextField.text = getGenres(idsGenre: filme.genre_ids!)     
         posterImage.load(url: filme.poster_path ?? "", size: .w780)
         

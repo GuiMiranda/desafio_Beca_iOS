@@ -10,6 +10,8 @@ import UIKit
 
 class FilmesView: UIViewController {
 
+    
+    @IBOutlet weak var filmesViewPrincipal: UIView!
     @IBOutlet weak var filmeTableView: UITableView!
     let nib = "FilmesTableViewCell"
     let identifier = "celulaNova"
@@ -26,7 +28,10 @@ class FilmesView: UIViewController {
         
     }
     
-
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func carregarDados(){
         let api = APIService()
         api.getPopularFilmes(pagina: 0, success: { (response) in
@@ -43,7 +48,7 @@ class FilmesView: UIViewController {
     private func commonInit() {
         let nib = UINib(nibName: "FilmesView", bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        self.view.addSubview(view)
+        self.filmesViewPrincipal.addSubview(view)
     }
     
 }
