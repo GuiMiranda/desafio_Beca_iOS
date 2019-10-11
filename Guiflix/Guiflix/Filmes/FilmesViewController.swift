@@ -10,21 +10,54 @@ import UIKit
 
 class FilmesViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    var filmesView : FilmesView?
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        filmesView = FilmesView(frame: view.frame)
+//
+//        filmesView?.filmeTableView.register(FilmesTableViewCell.self, forCellReuseIdentifier: "celulaNova")
+//
+//
+//        if let v = filmesView {
+//            self.view.addSubview(v)
+//        }
+//
+//        filmesView?.filmeTableView.delegate = self
+//        filmesView?.filmeTableView.dataSource = self
+//
+//    }
+//}
+//
+//extension FilmesViewController: UITableViewDataSource, UITableViewDelegate {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 2
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+////        print("Entrou no método cellForRowAt")
+////
+//        if let cell = filmesView?.filmeTableView.dequeueReusableCell(withIdentifier: "celulaNova") as? FilmesTableViewCell {
+//
+//            cell.setup()
+//        }
+//
+////        guard let celula = filmesView?.filmeTableView.dequeueReusableCell(withIdentifier: "celulaNova") as? FilmesTableViewCell else {fatalError()}
+////
+////        celula.lblTitle.text = "testando "
+////
+////        print("Finalizou a configuração da célula")
+////
+////
+////
+////
+////        return celula
+//
+//        return UITableViewCell()
+//
+//    }
+//
+    
 }

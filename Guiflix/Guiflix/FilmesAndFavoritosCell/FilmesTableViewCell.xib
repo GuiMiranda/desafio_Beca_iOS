@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmesTableViewCell" customModule="Guiflix" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaNova" id="KGk-i7-Jjw" customClass="FilmesTableViewCell" customModule="Guiflix" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS9-oC-61t">
+                        <rect key="frame" x="25" y="3" width="70" height="105"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="SAa-sa-10w"/>
+                            <constraint firstAttribute="height" constant="105" id="q9f-P2-Gor"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMz-cu-V21">
+                        <rect key="frame" x="120" y="10" width="269" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Os Vingadores: Guerra Infinita" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgM-Yd-vzi">
+                        <rect key="frame" x="105" y="33" width="299" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ano" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-NY-Rhq">
+                        <rect key="frame" x="120" y="58" width="31" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoQ-kM-amy">
+                        <rect key="frame" x="120" y="81" width="40" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="ctV-bg-XAT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="tMz-cu-V21" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="1gB-ch-o3S"/>
+                    <constraint firstItem="BS9-oC-61t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="2dm-Tq-gD0"/>
+                    <constraint firstItem="AbO-NY-Rhq" firstAttribute="leading" secondItem="BS9-oC-61t" secondAttribute="trailing" constant="25" id="7ao-eS-THp"/>
+                    <constraint firstItem="BS9-oC-61t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="7nn-Ue-lUU"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BS9-oC-61t" secondAttribute="bottom" constant="5" id="AMA-3u-92U"/>
+                    <constraint firstItem="CoQ-kM-amy" firstAttribute="leading" secondItem="AbO-NY-Rhq" secondAttribute="leading" id="LOU-HG-Tdn"/>
+                    <constraint firstAttribute="trailing" secondItem="tMz-cu-V21" secondAttribute="trailing" constant="25" id="TE8-ki-DOr"/>
+                    <constraint firstItem="jgM-Yd-vzi" firstAttribute="top" secondItem="tMz-cu-V21" secondAttribute="bottom" constant="2" id="ZBH-9k-2IJ"/>
+                    <constraint firstItem="jgM-Yd-vzi" firstAttribute="leading" secondItem="BS9-oC-61t" secondAttribute="trailing" constant="10" id="ZD6-ia-86j"/>
+                    <constraint firstItem="tMz-cu-V21" firstAttribute="leading" secondItem="BS9-oC-61t" secondAttribute="trailing" constant="25" id="kBo-5b-Lrn"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CoQ-kM-amy" secondAttribute="bottom" constant="5" id="kfl-fH-i9q"/>
+                    <constraint firstItem="AbO-NY-Rhq" firstAttribute="top" secondItem="jgM-Yd-vzi" secondAttribute="bottom" constant="8" id="m9u-ia-f7T"/>
+                    <constraint firstAttribute="trailing" secondItem="jgM-Yd-vzi" secondAttribute="trailing" constant="10" id="t2L-ar-8Vk"/>
+                    <constraint firstItem="CoQ-kM-amy" firstAttribute="top" secondItem="AbO-NY-Rhq" secondAttribute="bottom" constant="2" id="zIP-1K-dOR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ivPoster" destination="BS9-oC-61t" id="Cgv-B7-DYk"/>
+                <outlet property="lblTitle" destination="jgM-Yd-vzi" id="I1F-dA-vz5"/>
+                <outlet property="lblYear" destination="CoQ-kM-amy" id="iga-y8-4yV"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="144.64285714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

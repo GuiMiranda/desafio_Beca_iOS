@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fB0-V2-anq">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fB0-V2-anq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,14 +11,14 @@
         <!--Favoritos-->
         <scene sceneID="yKr-Yo-gVF">
             <objects>
-                <viewController id="wMQ-MC-LM8" customClass="FavoritoViewController" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wMQ-MC-LM8" customClass="FavoritoView" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JQP-GI-9m5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cex-eK-eVQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" id="Zk1-DL-OKo"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="favorite_black_36pt" id="Zk1-DL-OKo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wz1-ad-dKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -29,14 +27,14 @@
         <!--Filmes-->
         <scene sceneID="kXL-Tj-cOM">
             <objects>
-                <viewController id="YWz-YW-paN" customClass="FilmesViewController" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YWz-YW-paN" customClass="FilmesView" customModule="Guiflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EB9-Bw-BXG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5Pr-oF-d6P"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Filmes" id="kF2-eV-9kk"/>
+                    <tabBarItem key="tabBarItem" title="Filmes" image="movie_black_36pt" id="kF2-eV-9kk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBU-7b-iGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,6 +48,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="YWz-YW-paN" kind="relationship" relationship="viewControllers" id="CbW-qL-EMK"/>
@@ -61,4 +60,8 @@
             <point key="canvasLocation" x="-915" y="-237"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite_black_36pt" width="36" height="36"/>
+        <image name="movie_black_36pt" width="36" height="36"/>
+    </resources>
 </document>
