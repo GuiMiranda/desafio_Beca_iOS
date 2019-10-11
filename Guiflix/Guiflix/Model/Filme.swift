@@ -5,7 +5,6 @@
 //  Created by Andre Medeiros Silva on 09/10/19.
 //  Copyright © 2019 Guilherme Miranda Lopes. All rights reserved.
 //
-import ObjectMapper
 import UIKit
 
 struct Filme: Codable{

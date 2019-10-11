@@ -14,11 +14,29 @@ class FavoritosRepository: NSObject {
     
     let favoritolKey = "favorito"
     
+    private static var instance : FavoritosRepository?
+    
+    /**
+     * Cache interno, eh desfeito quando um add, remove, removeAll eh chamado
+     */
+    private var cache : [Filme]?
+    
+    private override init(){
+        super.init()
+    }
+    
+    public static func getInstance() -> FavoritosRepository{
+        if(instance == nil){
+            instance = FavoritosRepository.init()
+        }
+        return instance!
+    }
+    
     func add(filme : Filme) {
         var list = listMovies()
 
         // Se já existe não add
-        for (index, filmeLocal) in list.enumerated() {
+        for (_, filmeLocal) in list.enumerated() {
             if(filmeLocal.id == filme.id) {
                 return
             }
@@ -33,6 +51,7 @@ class FavoritosRepository: NSObject {
             let didSave = preferences.synchronize()
             print(didSave)
         }
+        cache = nil
     }
     
     func remove(filme: Filme) {
@@ -52,6 +71,7 @@ class FavoritosRepository: NSObject {
                 return
             }
         }
+        cache = nil
     }
     
     func removeAll() {
@@ -59,17 +79,41 @@ class FavoritosRepository: NSObject {
         //  Save to disk
         let didSave = preferences.synchronize()
         print(didSave)
+        cache = nil
     }
     
     func listMovies() -> [Filme] {
-        var filmes = [Filme]()
-        if preferences.object(forKey: favoritolKey) != nil {
-            if let filmesJson = preferences.value(forKey: favoritolKey) as? Data {
-                do {
-                   if let f = try? JSONDecoder().decode([Filme].self, from: filmesJson) {
-                    filmes = f
+        if(cache==nil){
+            cache = [Filme]()
+            if preferences.object(forKey: favoritolKey) != nil {
+                if let filmesJson = preferences.value(forKey: favoritolKey) as? Data {
+                    do {
+                       if let f = try? JSONDecoder().decode([Filme].self, from: filmesJson) {
+                        cache = f
+                        }
                     }
                 }
+            }
+        }
+        return cache!
+    }
+    
+    func findMovieById(id: CLong) -> Filme?{
+        let list = listMovies()
+        for (_, filmeLocal) in list.enumerated() {
+            if(filmeLocal.id == id) {
+                return filmeLocal
+            }
+        }
+        return nil
+    }
+    
+    func findMovieByNome(name: String) -> [Filme]{
+        let list = listMovies()
+        var filmes = [Filme]()
+        for (_, filmeLocal) in list.enumerated() {
+            if((filmeLocal.title?.lowercased().contains(name.lowercased()))!) {
+                filmes.append(filmeLocal)
             }
         }
         return filmes

@@ -10,3 +10,6 @@
 //"detalhes.nota" = "Nota: ";
 "detalhes.sinopse" = "Sinopse:";
 "detalhes.generos" = "Gêneros:";
+
+"detalhes.favoritar" = "Favoritar";
+"detalhes.desfavoritar" = "Desfavoritar";
