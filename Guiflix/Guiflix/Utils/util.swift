@@ -68,6 +68,9 @@ func getGenre(idGenre: Int) -> String{
     }
 }
 
+
+
+
 func getPoster(poster_path: String) -> UIImage{
     let url = URL(string: "https://image.tmdb.org/t/p/w500\(String(describing: poster_path))")!
     var image = UIImage()

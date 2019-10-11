@@ -11,6 +11,7 @@ class APIService {
     
     public typealias ListSuccess = ((_ resposta: FilmesResponse) -> Void)
     public typealias ListError = ((_ errorMessage: String) -> Void)
+    var favoritos: [Filme] = []
     
     func getPopularFilmes(pagina: Int, success: @escaping ListSuccess,  failure: @escaping ListError) {
         
@@ -31,6 +32,16 @@ class APIService {
                     let filmesResponse = try JSONDecoder().decode(FilmesResponse.self, from: data)
                     DispatchQueue.main.async {
                         let response = filmesResponse
+                        let filmesAPI = response.results
+                        let favorities = FavoritosRepository().listMovies()
+                       
+                        for var filme in filmesAPI ?? []{
+                            for favorito in favorities{
+                                if filme.id == favorito.id{
+                                    filme.isFavorite = true
+                                }
+                            }
+                        }
                         success(response)
                     }
                 } catch {
