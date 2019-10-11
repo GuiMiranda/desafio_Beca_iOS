@@ -56,7 +56,7 @@ class DetalhesViewController: UIViewController {
        // generoTextField.text = filme.genre.joined(separator: ",")
 
 //        generoTextField.text = filme.genre.joined(separator: ",")
-s
+
         
         //TODO verificar qual a melhor maneira de carregar a imagem de uma url
         //TODO ler o baseUrl da constantes
