@@ -40,13 +40,16 @@ class DetalhesViewController: UIViewController {
             fatalError("Erro ao mostrar detalhes do filme selecionado")
         }
         navigationBar.title = filme.title
+        navigationBar.leftBarButtonItem?.tintColor = .white
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
         notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average!)/100)))
         sinopseTextField.text = filme.overview
         generoTextField.text = getGenres(idsGenre: filme.genre_ids!)     
         posterImage.load(url: filme.poster_path ?? "", size: .w780)
         
-        favorito = favoritosRepository.findMovieById(id: filme.id!) != nil
+        //TODO, quando a tabela mostrar o favoritos, teremos que alterar esse trecho
+        //
+        favorito = (favoritosRepository.findMovieById(id: filme.id!) != nil)
         favoritoButton.image = favorito ? imagemFavoritado : imagemNaoFavoritado
     }
     
@@ -57,11 +60,13 @@ class DetalhesViewController: UIViewController {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        if(favoritoButton.image == imagemFavoritado){
+        if(favorito){
             favoritoButton.image = imagemNaoFavoritado
+            favorito=false
             favoritosRepository.remove(filme: filme!)
         } else{
             favoritoButton.image = imagemFavoritado
+            favorito=true
             favoritosRepository.add(filme: filme!)
         }
     }

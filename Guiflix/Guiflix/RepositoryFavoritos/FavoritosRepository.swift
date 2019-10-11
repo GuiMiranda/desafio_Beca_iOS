@@ -16,11 +16,6 @@ class FavoritosRepository: NSObject {
     
     private static var instance : FavoritosRepository?
     
-    /**
-     * Cache interno, eh desfeito quando um add, remove, removeAll eh chamado
-     */
-    private var cache : [Filme]?
-    
     private override init(){
         super.init()
     }
@@ -51,7 +46,6 @@ class FavoritosRepository: NSObject {
             let didSave = preferences.synchronize()
             print(didSave)
         }
-        cache = nil
     }
     
     func remove(filme: Filme) {
@@ -71,7 +65,6 @@ class FavoritosRepository: NSObject {
                 return
             }
         }
-        cache = nil
     }
     
     func removeAll() {
@@ -79,23 +72,20 @@ class FavoritosRepository: NSObject {
         //  Save to disk
         let didSave = preferences.synchronize()
         print(didSave)
-        cache = nil
     }
     
     func listMovies() -> [Filme] {
-        if(cache==nil){
-            cache = [Filme]()
-            if preferences.object(forKey: favoritolKey) != nil {
-                if let filmesJson = preferences.value(forKey: favoritolKey) as? Data {
-                    do {
-                       if let f = try? JSONDecoder().decode([Filme].self, from: filmesJson) {
-                        cache = f
-                        }
+        var films = [Filme]()
+        if preferences.object(forKey: favoritolKey) != nil {
+            if let filmesJson = preferences.value(forKey: favoritolKey) as? Data {
+                do {
+                   if let f = try? JSONDecoder().decode([Filme].self, from: filmesJson) {
+                    films = f
                     }
                 }
             }
         }
-        return cache!
+        return films
     }
     
     func findMovieById(id: CLong) -> Filme?{
