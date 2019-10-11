@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" translatesAutoresizingMaskIntoConstraints="NO" id="aKi-ZB-g3Y">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="i5M-Pr-FkT" id="mXD-tX-Jer"/>
@@ -31,7 +31,7 @@
             <constraints>
                 <constraint firstItem="aKi-ZB-g3Y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Kd-BY-GTY"/>
                 <constraint firstItem="aKi-ZB-g3Y" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6lW-YG-30E"/>
-                <constraint firstItem="aKi-ZB-g3Y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QBX-ys-q8O"/>
+                <constraint firstItem="aKi-ZB-g3Y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QBX-ys-q8O"/>
                 <constraint firstItem="aKi-ZB-g3Y" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="juv-Is-ew7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

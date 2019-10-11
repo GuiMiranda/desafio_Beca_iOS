@@ -28,14 +28,19 @@ class DetalhesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        popularCamposFilme()
-        preencherLabels()
+        //popularCamposFilme()
+        //preencherLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBar.title = filme?.title
+        posterImage.load(url: filme?.poster_path ?? "", size: .w780)
     }
     
     
     func popularCamposFilme(){
         //TODO remover o mock
-        filme = Filme(popularity: 1, vote_count: 1, video: false, poster_path: "/e1mjopzAS2KNsvpbpahQ1a6SkSn.jpg", id: 123, adult: false, backdrop_path: "", original_language: "", original_title: "", genre_ids: [], genre: ["Suspense", "Acao"], title: "Filme blabla", vote_average: 9.98, overview: "From DC Comics comes the Suicide Squad, an antihero team of incarcerated supervillains who act as deniable assets for the United States government, undertaking high-risk black ops missions in exchange for commuted prison sentences.", release_date: "2019-01-01")
         
         guard let filme = self.filme else{
             fatalError("Erro ao mostrar detalhes do filme selecionado")
@@ -45,9 +50,9 @@ class DetalhesViewController: UIViewController {
         navigationBar.title = filme.title
 //        notaLabel.text = "\(NSLocalizedString("detalhes.nota", comment: ""))\(String(Double(round(100*filme.vote_average)/100)))"
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
-        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average)/100)))
+//        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average)/100)))
         sinopseTextField.text = filme.overview
-        generoTextField.text = filme.genre.joined(separator: ",")
+//        generoTextField.text = filme.genre.joined(separator: ",")
         
         //TODO verificar qual a melhor maneira de carregar a imagem de uma url
         //TODO ler o baseUrl da constantes

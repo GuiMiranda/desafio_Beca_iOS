@@ -8,6 +8,8 @@
 import UIKit
 import Foundation
 
+public typealias completionImage = ( (_ image: UIImage) -> Void)
+
 func getGenres(idsGenre: [Int]) -> String{
     var i = 0
     var generos: String = ""
@@ -68,7 +70,7 @@ func getGenre(idGenre: Int) -> String{
     }
 }
 
-func getPoster(poster_path: String) -> UIImage{
+func getPoster(poster_path: String, imagem: @escaping completionImage){
     let url = URL(string: "https://image.tmdb.org/t/p/w500\(String(describing: poster_path))")!
     var image = UIImage()
     // Perform on background thread
@@ -86,10 +88,52 @@ func getPoster(poster_path: String) -> UIImage{
         
         // Perform on UI thread
         DispatchQueue.main.async {
-            return image
+            imagem(image)
             /* Do some stuff with your imageView */
         }
     }
-    return image
+    
 }
 
+
+extension String {
+
+    func toDate(withFormat format: String = "yyyy-MM-dd")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+
+    }
+}
+
+enum imageSize: Int{
+    case w92 = 92
+    case w154 = 154
+    case w185 = 185
+    case w342 = 342
+    case w500 = 500
+    case w780 = 780
+}
+
+extension UIImageView {
+    
+    func load(url: String, size: imageSize) {
+        let urlConverted = URL(string: "https://image.tmdb.org/t/p/w\(size.rawValue)\(String(describing: url))")!
+        
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: urlConverted) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
