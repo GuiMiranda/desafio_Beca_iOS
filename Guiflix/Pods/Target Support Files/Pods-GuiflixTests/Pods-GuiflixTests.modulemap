@@ -1,0 +1,6 @@
+framework module Pods_GuiflixTests {
+  umbrella header "Pods-GuiflixTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
