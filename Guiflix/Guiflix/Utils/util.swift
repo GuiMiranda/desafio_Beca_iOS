@@ -5,10 +5,26 @@
 //  Created by Andre Medeiros Silva on 09/10/19.
 //  Copyright © 2019 Guilherme Miranda Lopes. All rights reserved.
 //
-
+import UIKit
 import Foundation
 
-func getGenres(idGenre: Int) -> String{
+func getGenres(idsGenre: [Int]) -> String{
+    var i = 0
+    var generos: String = ""
+    while i != idsGenre.count {
+        if !getGenre(idGenre: idsGenre[i]).isEmpty{
+            if !generos.isEmpty{
+                generos = "\(generos) - " + getGenre(idGenre: idsGenre[i])
+            }else{
+                generos = "\(generos)" + getGenre(idGenre: idsGenre[i])
+            }
+        }
+        i = i + 1        
+    }
+    return generos
+}
+
+func getGenre(idGenre: Int) -> String{
     
     switch idGenre {
     case 28:
@@ -48,7 +64,32 @@ func getGenres(idGenre: Int) -> String{
     case 37:
         return "Western"
     default:
-       return "unknow genre"
+        return ""
     }
-    
 }
+
+func getPoster(poster_path: String) -> UIImage{
+    let url = URL(string: "https://image.tmdb.org/t/p/w500\(String(describing: poster_path))")!
+    var image = UIImage()
+    // Perform on background thread
+    DispatchQueue.global().async {
+        
+        // Create data from url (You can handle exeption with try-catch)
+        guard let data = try? Data(contentsOf: url) else {
+            return
+        }
+        
+        // Create image from data
+        guard let image = UIImage(data: data) else {
+            return
+        }
+        
+        // Perform on UI thread
+        DispatchQueue.main.async {
+            return image
+            /* Do some stuff with your imageView */
+        }
+    }
+    return image
+}
+

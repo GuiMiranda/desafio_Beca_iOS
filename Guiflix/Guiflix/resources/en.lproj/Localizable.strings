@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Guiflix
+
+  Created by Scott Yamagami Takahashi on 11/10/19.
+  Copyright © 2019 Guilherme Miranda Lopes. All rights reserved.
+*/
+"detalhes.voltar" = "Voltar";
+"detalhes.nota" = "Nota: %@";
+//"detalhes.nota" = "Nota: ";
+"detalhes.sinopse" = "Sinopse:";
+"detalhes.generos" = "Gêneros:";
