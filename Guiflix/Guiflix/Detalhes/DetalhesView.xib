@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetalhesViewController" customModule="Guiflix" customModuleProvider="target">
+            <connections>
+                <outlet property="favoritoButton" destination="knj-20-9y9" id="eek-TK-yBC"/>
+                <outlet property="generoLabel" destination="QoL-Cz-Ed5" id="Pqi-Rr-DQT"/>
+                <outlet property="generoTextField" destination="oRS-gG-FFe" id="4qu-lM-h88"/>
+                <outlet property="navigationBar" destination="Igg-j6-qOC" id="J7A-KV-ZKQ"/>
+                <outlet property="notaLabel" destination="slB-08-iF1" id="9BL-S7-gwi"/>
+                <outlet property="posterImage" destination="8IR-Qx-Qwa" id="nas-1m-PfM"/>
+                <outlet property="sinopseLabel" destination="WpH-kx-inM" id="mIK-sl-th7"/>
+                <outlet property="sinopseTextField" destination="2cf-Nq-ThJ" id="yBv-9o-l4q"/>
+                <outlet property="view" destination="iN0-l3-epB" id="d6E-vd-gFI"/>
+                <outlet property="voltarButton" destination="3T9-Lx-l2V" id="LR4-eE-19z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DetalhesView" customModule="Guiflix" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8IR-Qx-Qwa" userLabel="Poster">
+                    <rect key="frame" x="20" y="69" width="374" height="419"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="8IR-Qx-Qwa" secondAttribute="height" multiplier="1:1.12" id="6Q5-oF-3K7"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genero_placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoL-Cz-Ed5">
+                    <rect key="frame" x="20" y="649.33333333333337" width="151.66666666666666" height="20.333333333333371"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20.5" id="6In-31-W7I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-Nq-ThJ" userLabel="Sinopse - conteudo">
+                    <rect key="frame" x="20" y="516.33333333333337" width="374" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="qnq-4Z-CfV"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tog-bg-3eM">
+                    <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="Igg-j6-qOC">
+                            <barButtonItem key="leftBarButtonItem" title="voltar_placeholder" id="3T9-Lx-l2V">
+                                <connections>
+                                    <action selector="clickVoltar:" destination="-1" id="pcX-rq-4rt"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Item" image="favorite_black_24pt" id="knj-20-9y9">
+                                <connections>
+                                    <action selector="clickFavorito:" destination="-1" id="w1t-kE-Y8m"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="IMy-4O-rrl">
+                    <rect key="frame" x="20" y="496" width="374" height="20.333333333333371"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sinop_placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-kx-inM" userLabel="Sinopse - label">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="20.333333333333332"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="ifg-4G-JYm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nota_placeholder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slB-08-iF1">
+                            <rect key="frame" x="269" y="0.0" width="105" height="20.333333333333332"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="105" id="pB7-fb-DmD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="placeholder, placeholder, ,placeholder" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-gG-FFe">
+                    <rect key="frame" x="20" y="669.66666666666663" width="374" height="46"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="PSP-VF-PCS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8IR-Qx-Qwa" firstAttribute="top" secondItem="tog-bg-3eM" secondAttribute="bottom" constant="5" id="0fE-nI-k5e"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oRS-gG-FFe" secondAttribute="trailing" constant="20" id="43g-tc-46c"/>
+                <constraint firstItem="8IR-Qx-Qwa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6yU-Y8-LGw"/>
+                <constraint firstItem="tog-bg-3eM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BmY-49-H53"/>
+                <constraint firstItem="oRS-gG-FFe" firstAttribute="top" secondItem="QoL-Cz-Ed5" secondAttribute="bottom" id="FAv-BI-vk6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IMy-4O-rrl" secondAttribute="trailing" constant="20" id="FCm-Fz-bsC"/>
+                <constraint firstItem="oRS-gG-FFe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Gd2-11-rC9"/>
+                <constraint firstItem="IMy-4O-rrl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Gzm-DO-f4F"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8IR-Qx-Qwa" secondAttribute="trailing" constant="20" id="JmT-4z-LiQ"/>
+                <constraint firstItem="2cf-Nq-ThJ" firstAttribute="top" secondItem="IMy-4O-rrl" secondAttribute="bottom" id="Q0v-Jl-lYf"/>
+                <constraint firstItem="tog-bg-3eM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Sxn-ps-12V"/>
+                <constraint firstItem="IMy-4O-rrl" firstAttribute="top" secondItem="8IR-Qx-Qwa" secondAttribute="bottom" constant="8" id="U03-jH-ZIA"/>
+                <constraint firstItem="QoL-Cz-Ed5" firstAttribute="top" secondItem="2cf-Nq-ThJ" secondAttribute="bottom" constant="5" id="WF7-Dg-ER4"/>
+                <constraint firstItem="QoL-Cz-Ed5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="YbQ-82-lFc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2cf-Nq-ThJ" secondAttribute="trailing" constant="20" id="oeE-Mt-P5H"/>
+                <constraint firstItem="tog-bg-3eM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="pRw-WT-u6O"/>
+                <constraint firstItem="2cf-Nq-ThJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="vOk-KP-kBA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="78.260869565217391"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="favorite_black_24pt" width="24" height="24"/>
+    </resources>
+</document>

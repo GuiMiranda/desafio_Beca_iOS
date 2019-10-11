@@ -27,10 +27,10 @@ class FilmesTableViewCell: UITableViewCell {
         ivPoster.layer.masksToBounds = true
     }
     
-    func setup(){
-//        self.lblTitle.text = "teste"
-//        self.ivPoster.image = UIImage()
-//        self.lblYear.text = "2020"
+    func setup(title: String, poster: String, year: String){
+        self.lblTitle.text = title
+        self.ivPoster.load(url: poster, size: .w92)
+        self.lblYear.text = year
     }
     
 

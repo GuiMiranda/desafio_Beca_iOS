@@ -5,33 +5,26 @@
 //  Created by Andre Medeiros Silva on 09/10/19.
 //  Copyright © 2019 Guilherme Miranda Lopes. All rights reserved.
 //
-
+import ObjectMapper
 import UIKit
 
-struct Filme : Codable {
-    var popularity: Double
-    var vote_count: CLong
-    var video: Bool
-    var poster_path: String
-    var id: CLong
-    var adult: Bool
-    var backdrop_path: String
-    var original_language: String
-    var original_title: String
-    var genre_ids: [Int]
-    // usar somente genre nas views
-    var genre: [String]
-    var title: String
-    var vote_average: Double
-    var overview: String
-    var release_date: String
-
+struct Filme: Codable{
+    public var popularity: Double?
+    public var vote_count: CLong?
+    public var video: Bool?
+    public var poster_path: String?
+    public var id: CLong?
+    public var adult: Bool?
+    public var backdrop_path: String?
+    public var original_language: String?
+    public var original_title: String?
+    public var genre_ids: [Int]?
+    public var title: String?
+    public var vote_average: Double?
+    public var overview: String?
+    public var release_date: String?
+    public var isFavorite: Bool?
 }
-
-
-
-
-
 
 
 
