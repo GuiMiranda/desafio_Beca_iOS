@@ -28,8 +28,14 @@ class DetalhesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        popularCamposFilme()
-        preencherLabels()
+        //popularCamposFilme()
+        //preencherLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBar.title = filme?.title
+        posterImage.load(url: filme?.poster_path ?? "", size: .w780)
     }
     
     
@@ -46,7 +52,11 @@ class DetalhesViewController: UIViewController {
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
 //        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average)/100)))
         sinopseTextField.text = filme.overview
+
        // generoTextField.text = filme.genre.joined(separator: ",")
+
+//        generoTextField.text = filme.genre.joined(separator: ",")
+s
         
         //TODO verificar qual a melhor maneira de carregar a imagem de uma url
         //TODO ler o baseUrl da constantes
