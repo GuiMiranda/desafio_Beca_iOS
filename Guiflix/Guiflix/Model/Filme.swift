@@ -5,7 +5,6 @@
 //  Created by Andre Medeiros Silva on 09/10/19.
 //  Copyright © 2019 Guilherme Miranda Lopes. All rights reserved.
 //
-import ObjectMapper
 import UIKit
 
 struct Filme: Codable{
@@ -23,7 +22,7 @@ struct Filme: Codable{
     public var vote_average: Double?
     public var overview: String?
     public var release_date: String?
-    public var isFavorite: Bool
+    public var isFavorite: Bool?
 }
 
 
