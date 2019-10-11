@@ -22,7 +22,7 @@ struct Filme: Codable{
     public var vote_average: Double?
     public var overview: String?
     public var release_date: String?
-
+    public var isFavorite: Bool
 }
 
 
