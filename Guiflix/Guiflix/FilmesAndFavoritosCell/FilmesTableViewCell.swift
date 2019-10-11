@@ -21,11 +21,16 @@ class FilmesTableViewCell: UITableViewCell {
     }
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         ivPoster.layer.cornerRadius = 5.0
         ivPoster.layer.masksToBounds = true
     }
+    
+//    func setupImage(poster: String){
+//        self.ivPoster.load(url: poster, size: .w92)
+//    }
     
     func setup(title: String, poster: String, year: String){
         self.lblTitle.text = title
