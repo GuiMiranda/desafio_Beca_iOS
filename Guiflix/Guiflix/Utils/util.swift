@@ -71,6 +71,7 @@ func getGenre(idGenre: Int) -> String{
 }
 
 func getPoster(poster_path: String, imagem: @escaping completionImage){
+
     let url = URL(string: "https://image.tmdb.org/t/p/w500\(String(describing: poster_path))")!
     var image = UIImage()
     // Perform on background thread
