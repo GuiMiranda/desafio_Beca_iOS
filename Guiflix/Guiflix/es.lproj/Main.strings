@@ -1,0 +1,9 @@
+
+/* Class = "UITabBarItem"; title = "Favoritos"; ObjectID = "Zk1-DL-OKo"; */
+"Zk1-DL-OKo.title" = "Favoritos";
+
+/* Class = "UITabBarController"; title = "Guiflix"; ObjectID = "fB0-V2-anq"; */
+"fB0-V2-anq.title" = "Guiflix";
+
+/* Class = "UITabBarItem"; title = "Filmes"; ObjectID = "kF2-eV-9kk"; */
+"kF2-eV-9kk.title" = "Filmes";

@@ -33,9 +33,10 @@ class APIService {
                     DispatchQueue.main.async {
                         let response = filmesResponse
                         let filmesAPI = response.results
-                        let favorities = FavoritosRepository().listMovies()
+                        let favorities = FavoritosRepository.getInstance().listMovies()
                        
                         for var filme in filmesAPI ?? []{
+                            filme.isFavorite = false
                             for favorito in favorities{
                                 if filme.id == favorito.id{
                                     filme.isFavorite = true
