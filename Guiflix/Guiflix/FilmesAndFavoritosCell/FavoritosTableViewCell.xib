@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+<<<<<<< HEAD:Guiflix/Guiflix/Favoritos/FavoritosCollectionViewCell.xib
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favCell" id="gTV-IL-0wX" customClass="FavoritosCollectionViewCell" customModule="Guiflix" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="450" height="720"/>
             <autoresizingMask key="autoresizingMask"/>
@@ -66,5 +67,16 @@
             </connections>
             <point key="canvasLocation" x="152.17391304347828" y="141.29464285714286"/>
         </collectionViewCell>
+=======
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FavoritosTableViewCell" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+        </tableViewCell>
+>>>>>>> ebfdc329c558d51e43293bfe207dbdaf6a44b97b:Guiflix/Guiflix/FilmesAndFavoritosCell/FavoritosTableViewCell.xib
     </objects>
 </document>
