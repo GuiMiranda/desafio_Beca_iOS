@@ -29,9 +29,9 @@
 		FD2B7F1523515F9500309453 /* favoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B7F1323515F9500309453 /* favoritesViewController.swift */; };
 		FD2B7F1623515F9500309453 /* favoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2B7F1423515F9500309453 /* favoritesViewController.xib */; };
 		FD2B7F1923515FB300309453 /* FavoritosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B7F1723515FB300309453 /* FavoritosCollectionViewCell.swift */; };
-		FD2B7F1A23515FB300309453 /* FavoritosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2B7F1823515FB300309453 /* FavoritosCollectionViewCell.xib */; };
 		FD2B7F1D235167E400309453 /* FilmesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B7F1B235167E400309453 /* FilmesCollectionViewCell.swift */; };
 		FD2B7F1E235167E400309453 /* FilmesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2B7F1C235167E400309453 /* FilmesCollectionViewCell.xib */; };
+		FD77DDDE23523D21003D6550 /* FavoritosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD77DDDD23523D20003D6550 /* FavoritosCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,9 +78,9 @@
 		FD2B7F1323515F9500309453 /* favoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favoritesViewController.swift; sourceTree = "<group>"; };
 		FD2B7F1423515F9500309453 /* favoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = favoritesViewController.xib; sourceTree = "<group>"; };
 		FD2B7F1723515FB300309453 /* FavoritosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosCollectionViewCell.swift; sourceTree = "<group>"; };
-		FD2B7F1823515FB300309453 /* FavoritosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritosCollectionViewCell.xib; sourceTree = "<group>"; };
 		FD2B7F1B235167E400309453 /* FilmesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD2B7F1C235167E400309453 /* FilmesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmesCollectionViewCell.xib; sourceTree = "<group>"; };
+		FD77DDDD23523D20003D6550 /* FavoritosCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritosCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +181,8 @@
 			children = (
 				FD2B7F1323515F9500309453 /* favoritesViewController.swift */,
 				FD2B7F1423515F9500309453 /* favoritesViewController.xib */,
+				FD77DDDD23523D20003D6550 /* FavoritosCollectionViewCell.xib */,
 				FD2B7F1723515FB300309453 /* FavoritosCollectionViewCell.swift */,
-				FD2B7F1823515FB300309453 /* FavoritosCollectionViewCell.xib */,
 			);
 			path = Favoritos;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 				6B961922234E72BD0037F483 /* LaunchScreen.storyboard in Resources */,
 				6B96191F234E72BD0037F483 /* Assets.xcassets in Resources */,
 				6B961957234E9C5B0037F483 /* FilmesView.xib in Resources */,
-				FD2B7F1A23515FB300309453 /* FavoritosCollectionViewCell.xib in Resources */,
+				FD77DDDE23523D21003D6550 /* FavoritosCollectionViewCell.xib in Resources */,
 				7B3EDC3F2350B9490001A21F /* Localizable.strings in Resources */,
 				FD2B7F1E235167E400309453 /* FilmesCollectionViewCell.xib in Resources */,
 				6B96191D234E72BC0037F483 /* Main.storyboard in Resources */,
