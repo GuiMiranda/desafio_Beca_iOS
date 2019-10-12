@@ -69,15 +69,10 @@ extension FilmesView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = grid.dequeueReusableCell(withReuseIdentifier: filmesCellidentifier, for: indexPath) as? FilmesCollectionViewCell else {fatalError()}
         
-        let calendar = Calendar.current
-        let filme = filmes?.results?[indexPath.row]
+        if let filme = filmes?.results?[indexPath.row] {
+            cell.setup(filme: filme)
+        }
         
-        let year = String(calendar.component(.year, from: (filme?.release_date)!.toDate()!))
-        
-        let poster = filme?.poster_path
-        let title = filme?.title
-        
-        cell.setup(title: title!, poster: poster!, year: year)
         return cell
     }
     

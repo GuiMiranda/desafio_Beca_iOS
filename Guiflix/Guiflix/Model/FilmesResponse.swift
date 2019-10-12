@@ -17,4 +17,3 @@ class FilmesResponse: Codable {
     var status_message: String?
     var success: Bool?
 }
-

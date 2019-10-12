@@ -20,12 +20,9 @@ class FilmesCollectionViewCell: UICollectionViewCell {
         poster.layer.masksToBounds = true
     }
     
-    func setup(title: String, poster: String, year: String){
-        self.title.text = title
-        self.poster.load(url: poster, size: .w92)
-        self.releaseDate.text = year
+    func setup(filme: Filme){
+        self.title.text = filme.title
+        self.poster.load(url: filme.poster_path, size: .w92)
+        self.releaseDate.text = filme.release_date?.getYear()
     }
-    
-
-
 }

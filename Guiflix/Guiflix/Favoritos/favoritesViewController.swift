@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
@@ -18,15 +19,39 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     var filmes = [Filme]()
     
+    let animationView = AnimationView()
+    
+    func emptySearch() {
+        let animation = Animation.named("seach-empty", subdirectory: nil)
+          
+          animationView.animation = animation
+          animationView.contentMode = .scaleAspectFit
+          view.addSubview(animationView)
+        
+          animationView.backgroundBehavior = .pauseAndRestore
+          animationView.translatesAutoresizingMaskIntoConstraints = false
+          animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+          animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+          
+          animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+        
+        animationView.play(fromProgress: 0,
+                           toProgress: 1,
+                           loopMode: LottieLoopMode.playOnce,
+                           completion: { (finished) in
+                            if finished {
+                              print("Animation Complete")
+                            } else {
+                              print("Animation cancelled")
+                            }
+                            self.animationView.removeFromSuperview()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-//        if let flowLayout = favGrid.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
-//        }
     }
-    
-    
     
     private func commonInit() {
         
@@ -46,7 +71,12 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     func loadFilme() {
         filmes = FavoritosRepository.getInstance().listMovies()
-        favGrid.reloadData()
+        if (filmes.count > 0 ) {
+            favGrid.reloadData()
+        }
+        else {
+            emptySearch()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -54,7 +84,6 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let screen = UIScreen.main.bounds
         return CGSize(width:screen.width, height: screen.height)
     }
@@ -70,14 +99,8 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favGrid.dequeueReusableCell(withReuseIdentifier: favsCellidentifier, for: indexPath) as? FavoritosCollectionViewCell else {fatalError()}
         
-        let calendar = Calendar.current
-        
-        let year = String(calendar.component(.year, from: (filmes[indexPath.row].release_date)!.toDate()!))
-        let poster = filmes[indexPath.row].poster_path
-        let title = filmes[indexPath.row].original_title
-        
-        cell.setup(title: title!, poster: poster!, year: year)
-        
+        let filme = filmes[indexPath.row]
+        cell.setup(filme: filme)
         return cell
     }
     

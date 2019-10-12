@@ -7,13 +7,47 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    var player:AVAudioPlayer!
+
+    func Play(){
+        SetSessionPlayerOn()
+       guard let path = Bundle.main.path(forResource: "diamonds", ofType: "mp3")else{return}
+           let soundURl = URL(fileURLWithPath: path)
+            //player = try? AVAudioPlayer(contentsOf: soundURl)
+            player = try? AVAudioPlayer(contentsOf: soundURl, fileTypeHint: AVFileType.mp3.rawValue)
+
+            player.volume = 1.0
+            player.prepareToPlay()
+            player.play()
+       }
+    
+    func SetSessionPlayerOn()
+    {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
+        } catch _ {
+        }
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch _ {
+        }
+        do {
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+        } catch _ {
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        Play()
         
         // Override point for customization after application launch.
         return true
