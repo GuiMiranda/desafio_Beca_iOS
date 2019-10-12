@@ -58,7 +58,6 @@ extension FilmesView: UITableViewDelegate, UITableViewDataSource {
         return filmes?.results?.count ?? 0
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let celula = filmeTableView.dequeueReusableCell(withIdentifier: identifier) as? FilmesTableViewCell else {fatalError()}
         let calendar = Calendar.current
@@ -67,8 +66,6 @@ extension FilmesView: UITableViewDelegate, UITableViewDataSource {
         let poster = filmes?.results?[indexPath.row].poster_path
         let title = filmes?.results?[indexPath.row].title
 
-        
-        
         celula.setup(title: title!, poster: poster!, year: year)
             return celula
     }
