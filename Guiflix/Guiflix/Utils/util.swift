@@ -10,15 +10,18 @@ import Foundation
 
 public typealias completionImage = ( (_ image: UIImage) -> Void)
 
-func getGenres(idsGenre: [Int]) -> String{
+func getGenres(idsGenre: [Int]?) -> String {
+    guard let idsGen = idsGenre else {
+        return ""
+    }
     var i = 0
     var generos: String = ""
-    while i != idsGenre.count {
-        if !getGenre(idGenre: idsGenre[i]).isEmpty{
+    while i != idsGen.count {
+        if !getGenre(idGenre: idsGen[i]).isEmpty{
             if !generos.isEmpty{
-                generos = "\(generos) - " + getGenre(idGenre: idsGenre[i])
+                generos = "\(generos) - " + getGenre(idGenre: idsGen[i])
             }else{
-                generos = "\(generos)" + getGenre(idGenre: idsGenre[i])
+                generos = "\(generos)" + getGenre(idGenre: idsGen[i])
             }
         }
         i = i + 1        
@@ -71,35 +74,26 @@ func getGenre(idGenre: Int) -> String{
 }
 
 func getPoster(poster_path: String, imagem: @escaping completionImage){
-
     let url = URL(string: "https://image.tmdb.org/t/p/w500\(String(describing: poster_path))")!
-    var image = UIImage()
-    // Perform on background thread
     DispatchQueue.global().async {
         
-        // Create data from url (You can handle exeption with try-catch)
         guard let data = try? Data(contentsOf: url) else {
             return
         }
         
-        // Create image from data
         guard let image = UIImage(data: data) else {
             return
         }
         
-        // Perform on UI thread
         DispatchQueue.main.async {
             imagem(image)
-            /* Do some stuff with your imageView */
         }
     }
-    
 }
-
 
 extension String {
 
-    func toDate(withFormat format: String = "yyyy-MM-dd")-> Date?{
+    func toDate(withFormat format: String = "yyyy-MM-dd")-> Date? {
 
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
@@ -109,7 +103,14 @@ extension String {
         let date = dateFormatter.date(from: self)
 
         return date
-
+    }
+    
+    func getYear()-> String? {
+        let calendar = Calendar.current
+        if let date = self.toDate() {
+            return String(calendar.component(.year, from: date))
+        }
+        return nil
     }
 }
 
@@ -124,11 +125,18 @@ enum imageSize: Int{
 
 extension UIImageView {
     
-    func load(url: String, size: imageSize) {
-        let urlConverted = URL(string: "https://image.tmdb.org/t/p/w\(size.rawValue)\(String(describing: url))")!
+    func load(url: String?, size: imageSize) {
+        guard let urlString = url else {
+            return
+        }
+        
+        let urlConverted = URL(string: "https://image.tmdb.org/t/p/w\(size.rawValue)\(urlString)")
+        guard let urlOk = urlConverted else {
+            return
+        }
         
         DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: urlConverted) {
+            if let data = try? Data(contentsOf: urlOk) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image

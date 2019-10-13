@@ -7,14 +7,15 @@ DEPENDENCIES:
   - lottie-ios
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - lottie-ios
   trunk:
     - Hero
-    - lottie-ios
 
 SPEC CHECKSUMS:
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
 
-PODFILE CHECKSUM: 164b266756e1a1bd8aa24255417f051ceb2ec68a
+PODFILE CHECKSUM: 2e3751a31e542907f5c3fa1ba5cf98c5286d2c36
 
 COCOAPODS: 1.8.3

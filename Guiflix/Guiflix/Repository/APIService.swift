@@ -15,15 +15,19 @@ class APIService {
     
     func getPopularFilmes(pagina: Int, success: @escaping ListSuccess,  failure: @escaping ListError) {
         
-        let url: URL
+        let url: URL?
         if pagina != 0{
-             url = URL(string: "\(URL_BASE_API)\(API_KEY)&page=\(pagina)")!
+             url = URL(string: "\(URL_BASE_API)\(API_KEY)&page=\(pagina)")
         }else{
-             url = URL(string: "\(URL_BASE_API)\(API_KEY)")!
+             url = URL(string: "\(URL_BASE_API)\(API_KEY)")
+        }
+        
+        guard let urlOK = url else {
+            return
         }
   
         let session = URLSession.shared
-        session.dataTask(with: url) {data, response, error in
+        session.dataTask(with: urlOK) {data, response, error in
             if error != nil {
                  print(error!.localizedDescription)
              }
