@@ -19,22 +19,22 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     var filmes = [Filme]()
     
-    let animationView = AnimationView()
-    
     func emptySearch() {
-        let animation = Animation.named("seach-empty", subdirectory: nil)
-          
-          animationView.animation = animation
-          animationView.contentMode = .scaleAspectFit
-          view.addSubview(animationView)
-        
-          animationView.backgroundBehavior = .pauseAndRestore
-          animationView.translatesAutoresizingMaskIntoConstraints = false
-          animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-          animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-          
-          animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
-        
+        let animation = Animation.named("search-empty", subdirectory: nil)
+
+        let animationView = AnimationView()
+        animationView.animation = animation
+        animationView.contentMode = .scaleAspectFit
+        view.addSubview(animationView)
+
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+
+        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+
         animationView.play(fromProgress: 0,
                            toProgress: 1,
                            loopMode: LottieLoopMode.playOnce,
@@ -44,7 +44,14 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
                             } else {
                               print("Animation cancelled")
                             }
-                            self.animationView.removeFromSuperview()
+                            animationView.removeFromSuperview()
+                            
+                            let alert = UIAlertController(title: nil, message: "Você ainda não adicionou nenhum filme como favorito", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction.init(title: "Adicionar agora", style: .default, handler: { (a) in
+                                AppDelegate.addFavorito = true
+                                self.tabBarController?.selectedIndex = 0
+                            }))
+                            self.present(alert, animated: true, completion: nil)
         })
     }
     
@@ -71,10 +78,8 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     func loadFilme() {
         filmes = FavoritosRepository.getInstance().listMovies()
-        if (filmes.count > 0 ) {
-            favGrid.reloadData()
-        }
-        else {
+        favGrid.reloadData()
+        if (filmes.count == 0 ) {
             emptySearch()
         }
     }
@@ -85,7 +90,18 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screen = UIScreen.main.bounds
-        return CGSize(width:screen.width, height: screen.height)
+        
+        var bottomPadding: CGFloat = 0.0
+        var topPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+             let window = UIApplication.shared.keyWindow
+             bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+            topPadding = window?.safeAreaInsets.top ?? 0.0
+        }
+        
+        let menos = bottomPadding + topPadding + 100
+        
+        return CGSize(width:screen.width, height: self.view.frame.height - menos)
     }
     
 }

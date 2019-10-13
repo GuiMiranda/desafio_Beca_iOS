@@ -6,10 +6,7 @@ target 'Guiflix' do
   use_frameworks!
 
   # Pods for Guiflix
-  pod 'Alamofire'
-  pod "AlamofireObjectMapper"
   pod "lottie-ios"
-
 
   target 'GuiflixTests' do
     inherit! :search_paths

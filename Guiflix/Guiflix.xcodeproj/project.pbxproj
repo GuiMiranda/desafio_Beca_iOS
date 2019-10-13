@@ -26,6 +26,7 @@
 		94C1F0FB234F621F003C7958 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C1F0FA234F621F003C7958 /* Constantes.swift */; };
 		94C1F0FE234F65A7003C7958 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C1F0FD234F65A7003C7958 /* APIService.swift */; };
 		C408885AB2164E40D98D171C /* Pods_GuiflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7F67E6649FACBBC788FBED /* Pods_GuiflixTests.framework */; };
+		F1A781FB2352A13700FA2AFF /* favorite-heart.json in Resources */ = {isa = PBXBuildFile; fileRef = F1A781FA2352A13700FA2AFF /* favorite-heart.json */; };
 		F1AAE13A23528C12007A153A /* diamonds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1AAE13923528C12007A153A /* diamonds.mp3 */; };
 		F1AAE13D23529175007A153A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AAE13C23529175007A153A /* AudioToolbox.framework */; };
 		F1AAE13F23529798007A153A /* search-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = F1AAE13E23529798007A153A /* search-empty.json */; };
@@ -78,6 +79,7 @@
 		94C1F0FD234F65A7003C7958 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A8370D606A0E7AEC87712849 /* Pods_Guiflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guiflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2D46BB0F31799F75932ED2 /* Pods-GuiflixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuiflixTests.release.xcconfig"; path = "Target Support Files/Pods-GuiflixTests/Pods-GuiflixTests.release.xcconfig"; sourceTree = "<group>"; };
+		F1A781FA2352A13700FA2AFF /* favorite-heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "favorite-heart.json"; sourceTree = "<group>"; };
 		F1AAE13923528C12007A153A /* diamonds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = diamonds.mp3; sourceTree = "<group>"; };
 		F1AAE13C23529175007A153A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F1AAE13E23529798007A153A /* search-empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-empty.json"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F1AAE13E23529798007A153A /* search-empty.json */,
+				F1A781FA2352A13700FA2AFF /* favorite-heart.json */,
 				F1AAE13923528C12007A153A /* diamonds.mp3 */,
 				94C1F0FC234F6576003C7958 /* Repository */,
 				7B3EDC3C2350B9490001A21F /* resources */,
@@ -348,6 +351,7 @@
 				7B3EDC3F2350B9490001A21F /* Localizable.strings in Resources */,
 				F1AAE13A23528C12007A153A /* diamonds.mp3 in Resources */,
 				FD2B7F1E235167E400309453 /* FilmesCollectionViewCell.xib in Resources */,
+				F1A781FB2352A13700FA2AFF /* favorite-heart.json in Resources */,
 				6B96191D234E72BC0037F483 /* Main.storyboard in Resources */,
 				7B3EDC3B2350B8DB0001A21F /* DetalhesView.xib in Resources */,
 				FD2B7F1623515F9500309453 /* favoritesViewController.xib in Resources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class DetalhesViewController: UIViewController {
     
@@ -33,6 +34,16 @@ class DetalhesViewController: UIViewController {
         popularCamposFilme()
         preencherLabels()
         preencherAcessibilidade()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (AppDelegate.addFavorito) {
+            let alert = UIAlertController(title: nil, message: "Estamos quase lá, agora toque no coração", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func popularCamposFilme(){
@@ -69,7 +80,48 @@ class DetalhesViewController: UIViewController {
             favoritoButton.image = imagemFavoritado
             favorito=true
             favoritosRepository.add(filme: filme)
+            addSucesso()
+            addFavoriteAnimation()
         }
+    }
+    
+    func addSucesso() {
+        if (AppDelegate.addFavorito) {
+            let alert = UIAlertController(title: nil, message: "Muito bom, agora você já tem o seu primeiro filme favorito", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
+                AppDelegate.addFavorito = false
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func addFavoriteAnimation() {
+        let animation = Animation.named("favorite-heart", subdirectory: nil)
+
+        let animationView = AnimationView()
+        animationView.animation = animation
+        animationView.contentMode = .scaleAspectFit
+        posterImage.addSubview(animationView)
+
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerYAnchor.constraint(equalTo: posterImage.centerYAnchor).isActive = true
+        animationView.centerXAnchor.constraint(equalTo: posterImage.centerXAnchor).isActive = true
+
+
+        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+
+        animationView.play(fromProgress: 0,
+                           toProgress: 1,
+                           loopMode: LottieLoopMode.playOnce,
+                           completion: { (finished) in
+                            if finished {
+                              print("Animation Complete")
+                            } else {
+                              print("Animation cancelled")
+                            }
+                            animationView.removeFromSuperview()
+        })
     }
     
     @IBAction func clickVoltar(_ sender: Any) {
