@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
@@ -18,15 +19,46 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     var filmes = [Filme]()
     
+    func emptySearch() {
+        let animation = Animation.named("search-empty", subdirectory: nil)
+
+        let animationView = AnimationView()
+        animationView.animation = animation
+        animationView.contentMode = .scaleAspectFit
+        view.addSubview(animationView)
+
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+
+        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+
+        animationView.play(fromProgress: 0,
+                           toProgress: 1,
+                           loopMode: LottieLoopMode.playOnce,
+                           completion: { (finished) in
+                            if finished {
+                              print("Animation Complete")
+                            } else {
+                              print("Animation cancelled")
+                            }
+                            animationView.removeFromSuperview()
+                            
+                            let alert = UIAlertController(title: nil, message: "Você ainda não adicionou nenhum filme como favorito", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction.init(title: "Adicionar agora", style: .default, handler: { (a) in
+                                AppDelegate.addFavorito = true
+                                self.tabBarController?.selectedIndex = 0
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-//        if let flowLayout = favGrid.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
-//        }
     }
-    
-    
     
     private func commonInit() {
         
@@ -47,6 +79,9 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     func loadFilme() {
         filmes = FavoritosRepository.getInstance().listMovies()
         favGrid.reloadData()
+        if (filmes.count == 0 ) {
+            emptySearch()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -54,9 +89,19 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let screen = UIScreen.main.bounds
-        return CGSize(width:screen.width, height: screen.height)
+        
+        var bottomPadding: CGFloat = 0.0
+        var topPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+             let window = UIApplication.shared.keyWindow
+             bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+            topPadding = window?.safeAreaInsets.top ?? 0.0
+        }
+        
+        let menos = bottomPadding + topPadding + 100
+        
+        return CGSize(width:screen.width, height: self.view.frame.height - menos)
     }
     
 }
@@ -70,14 +115,8 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favGrid.dequeueReusableCell(withReuseIdentifier: favsCellidentifier, for: indexPath) as? FavoritosCollectionViewCell else {fatalError()}
         
-        let calendar = Calendar.current
-        
-        let year = String(calendar.component(.year, from: (filmes[indexPath.row].release_date)!.toDate()!))
-        let poster = filmes[indexPath.row].poster_path
-        let title = filmes[indexPath.row].original_title
-        
-        cell.setup(title: title!, poster: poster!, year: year)
-        
+        let filme = filmes[indexPath.row]
+        cell.setup(filme: filme)
         return cell
     }
     

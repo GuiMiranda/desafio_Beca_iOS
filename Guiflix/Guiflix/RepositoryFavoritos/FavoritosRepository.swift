@@ -27,17 +27,20 @@ class FavoritosRepository: NSObject {
         return instance!
     }
     
-    func add(filme : Filme) {
+    func add(filme : Filme?) {
+        guard let filmeOK = filme else {
+            return
+        }
         var list = listMovies()
 
         // Se já existe não add
         for (_, filmeLocal) in list.enumerated() {
-            if(filmeLocal.id == filme.id) {
+            if(filmeLocal.id == filmeOK.id) {
                 return
             }
         }
         
-        list.append(filme)
+        list.append(filmeOK)
 
         do {
             let jsonList = try? JSONEncoder().encode(list)
@@ -48,11 +51,14 @@ class FavoritosRepository: NSObject {
         }
     }
     
-    func remove(filme: Filme) {
+    func remove(filme: Filme?) {
+        guard let filmeOK = filme else {
+            return
+        }
         var list = listMovies()
-        
+    
         for (index, filmeLocal) in list.enumerated() {
-            if(filmeLocal.id == filme.id) {
+            if(filmeLocal.id == filmeOK.id) {
                 list.remove(at: index)
                 
                 do {
@@ -88,21 +94,27 @@ class FavoritosRepository: NSObject {
         return films
     }
     
-    func findMovieById(id: CLong) -> Filme?{
+    func findMovieById(id: CLong?) -> Filme?{
+        guard let idOK = id else {
+            return nil
+        }
         let list = listMovies()
         for (_, filmeLocal) in list.enumerated() {
-            if(filmeLocal.id == id) {
+            if(filmeLocal.id == idOK) {
                 return filmeLocal
             }
         }
         return nil
     }
     
-    func findMovieByNome(name: String) -> [Filme]{
-        let list = listMovies()
+    func findMovieByNome(name: String?) -> [Filme]{
         var filmes = [Filme]()
+        guard let nameOK = name else {
+            return filmes
+        }
+        let list = listMovies()
         for (_, filmeLocal) in list.enumerated() {
-            if((filmeLocal.title?.lowercased().contains(name.lowercased()))!) {
+            if((filmeLocal.title?.lowercased().contains(nameOK.lowercased()))!) {
                 filmes.append(filmeLocal)
             }
         }

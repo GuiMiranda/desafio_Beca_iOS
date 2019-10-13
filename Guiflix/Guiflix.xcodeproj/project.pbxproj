@@ -26,6 +26,10 @@
 		94C1F0FB234F621F003C7958 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C1F0FA234F621F003C7958 /* Constantes.swift */; };
 		94C1F0FE234F65A7003C7958 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C1F0FD234F65A7003C7958 /* APIService.swift */; };
 		C408885AB2164E40D98D171C /* Pods_GuiflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7F67E6649FACBBC788FBED /* Pods_GuiflixTests.framework */; };
+		F1A781FB2352A13700FA2AFF /* favorite-heart.json in Resources */ = {isa = PBXBuildFile; fileRef = F1A781FA2352A13700FA2AFF /* favorite-heart.json */; };
+		F1AAE13A23528C12007A153A /* diamonds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1AAE13923528C12007A153A /* diamonds.mp3 */; };
+		F1AAE13D23529175007A153A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AAE13C23529175007A153A /* AudioToolbox.framework */; };
+		F1AAE13F23529798007A153A /* search-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = F1AAE13E23529798007A153A /* search-empty.json */; };
 		FD2B7F1523515F9500309453 /* favoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B7F1323515F9500309453 /* favoritesViewController.swift */; };
 		FD2B7F1623515F9500309453 /* favoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2B7F1423515F9500309453 /* favoritesViewController.xib */; };
 		FD2B7F1923515FB300309453 /* FavoritosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B7F1723515FB300309453 /* FavoritosCollectionViewCell.swift */; };
@@ -75,6 +79,10 @@
 		94C1F0FD234F65A7003C7958 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A8370D606A0E7AEC87712849 /* Pods_Guiflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guiflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2D46BB0F31799F75932ED2 /* Pods-GuiflixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuiflixTests.release.xcconfig"; path = "Target Support Files/Pods-GuiflixTests/Pods-GuiflixTests.release.xcconfig"; sourceTree = "<group>"; };
+		F1A781FA2352A13700FA2AFF /* favorite-heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "favorite-heart.json"; sourceTree = "<group>"; };
+		F1AAE13923528C12007A153A /* diamonds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = diamonds.mp3; sourceTree = "<group>"; };
+		F1AAE13C23529175007A153A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F1AAE13E23529798007A153A /* search-empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-empty.json"; sourceTree = "<group>"; };
 		FD2B7F1323515F9500309453 /* favoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favoritesViewController.swift; sourceTree = "<group>"; };
 		FD2B7F1423515F9500309453 /* favoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = favoritesViewController.xib; sourceTree = "<group>"; };
 		FD2B7F1723515FB300309453 /* FavoritosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				453F129DD17DE1C931BA73B0 /* Pods_Guiflix.framework in Frameworks */,
+				F1AAE13D23529175007A153A /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,11 +146,13 @@
 		6B961916234E72BB0037F483 /* Guiflix */ = {
 			isa = PBXGroup;
 			children = (
+				F1AAE13E23529798007A153A /* search-empty.json */,
+				F1A781FA2352A13700FA2AFF /* favorite-heart.json */,
+				F1AAE13923528C12007A153A /* diamonds.mp3 */,
 				94C1F0FC234F6576003C7958 /* Repository */,
 				7B3EDC3C2350B9490001A21F /* resources */,
 				7B3EDC372350B8DA0001A21F /* Detalhes */,
 				6B96195A234F700A0037F483 /* RepositoryFavoritos */,
-				6BA5E91E234EBCB500146302 /* FilmesAndFavoritosCell */,
 				9439F079234E897600DD48AB /* Utils */,
 				9439F076234E7F1500DD48AB /* Model */,
 				6B961938234E745D0037F483 /* Favoritos */,
@@ -195,13 +206,6 @@
 			path = RepositoryFavoritos;
 			sourceTree = "<group>";
 		};
-		6BA5E91E234EBCB500146302 /* FilmesAndFavoritosCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FilmesAndFavoritosCell;
-			sourceTree = "<group>";
-		};
 		7B3EDC372350B8DA0001A21F /* Detalhes */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +252,7 @@
 		AA907D53159D63E2C4F82AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1AAE13C23529175007A153A /* AudioToolbox.framework */,
 				A8370D606A0E7AEC87712849 /* Pods_Guiflix.framework */,
 				6E7F67E6649FACBBC788FBED /* Pods_GuiflixTests.framework */,
 			);
@@ -344,10 +349,13 @@
 				6B961957234E9C5B0037F483 /* FilmesView.xib in Resources */,
 				FD77DDDE23523D21003D6550 /* FavoritosCollectionViewCell.xib in Resources */,
 				7B3EDC3F2350B9490001A21F /* Localizable.strings in Resources */,
+				F1AAE13A23528C12007A153A /* diamonds.mp3 in Resources */,
 				FD2B7F1E235167E400309453 /* FilmesCollectionViewCell.xib in Resources */,
+				F1A781FB2352A13700FA2AFF /* favorite-heart.json in Resources */,
 				6B96191D234E72BC0037F483 /* Main.storyboard in Resources */,
 				7B3EDC3B2350B8DB0001A21F /* DetalhesView.xib in Resources */,
 				FD2B7F1623515F9500309453 /* favoritesViewController.xib in Resources */,
+				F1AAE13F23529798007A153A /* search-empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,15 +625,18 @@
 			baseConfigurationReference = 489E66D9E65FBB7EEDF78036 /* Pods-Guiflix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Guiflix/Guiflix.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BRMZFBELGJ;
+				DEVELOPMENT_TEAM = HM79DMZSRQ;
 				INFOPLIST_FILE = Guiflix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.Guiflix;
+				PRODUCT_BUNDLE_IDENTIFIER = devs.Guiflix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -636,8 +647,10 @@
 			baseConfigurationReference = 17EB1C7256DE54B898401444 /* Pods-Guiflix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BRMZFBELGJ;
+				CODE_SIGN_ENTITLEMENTS = Guiflix/Guiflix.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Guiflix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -645,6 +658,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Guiflix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

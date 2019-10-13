@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class DetalhesViewController: UIViewController {
     
@@ -35,26 +36,32 @@ class DetalhesViewController: UIViewController {
         preencherAcessibilidade()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if (AppDelegate.addFavorito) {
+            let alert = UIAlertController(title: nil, message: "Estamos quase lá, agora toque no coração", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func popularCamposFilme(){
-        guard let filme = self.filme else{
+        guard let filmeOK = self.filme else{
             fatalError("Erro ao mostrar detalhes do filme selecionado")
         }
-        navigationBar.title = filme.title
+        navigationBar.title = filmeOK.title
         navigationBar.leftBarButtonItem?.tintColor = .white
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
-        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filme.vote_average!)/100)))
-        sinopseTextField.text = filme.overview
+        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filmeOK.vote_average!)/100)))
+        sinopseTextField.text = filmeOK.overview
 
-       // generoTextField.text = filme.genre.joined(separator: ",")
-
-//        generoTextField.text = filme.genre.joined(separator: ",")
-
-        generoTextField.text = getGenres(idsGenre: filme.genre_ids!)     
-        posterImage.load(url: filme.poster_path ?? "", size: .w780)
+        generoTextField.text = getGenres(idsGenre: filmeOK.genre_ids)
+        posterImage.load(url: filmeOK.poster_path ?? "", size: .w780)
         
         //TODO, quando a tabela mostrar o favoritos, teremos que alterar esse trecho
         //
-        favorito = (favoritosRepository.findMovieById(id: filme.id!) != nil)
+        favorito = (favoritosRepository.findMovieById(id: filmeOK.id) != nil)
         favoritoButton.image = favorito ? imagemFavoritado : imagemNaoFavoritado
     }
     
@@ -68,12 +75,53 @@ class DetalhesViewController: UIViewController {
         if(favorito){
             favoritoButton.image = imagemNaoFavoritado
             favorito=false
-            favoritosRepository.remove(filme: filme!)
+            favoritosRepository.remove(filme: filme)
         } else{
             favoritoButton.image = imagemFavoritado
             favorito=true
-            favoritosRepository.add(filme: filme!)
+            favoritosRepository.add(filme: filme)
+            addSucesso()
+            addFavoriteAnimation()
         }
+    }
+    
+    func addSucesso() {
+        if (AppDelegate.addFavorito) {
+            let alert = UIAlertController(title: nil, message: "Muito bom, agora você já tem o seu primeiro filme favorito", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
+                AppDelegate.addFavorito = false
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func addFavoriteAnimation() {
+        let animation = Animation.named("favorite-heart", subdirectory: nil)
+
+        let animationView = AnimationView()
+        animationView.animation = animation
+        animationView.contentMode = .scaleAspectFit
+        posterImage.addSubview(animationView)
+
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.centerYAnchor.constraint(equalTo: posterImage.centerYAnchor).isActive = true
+        animationView.centerXAnchor.constraint(equalTo: posterImage.centerXAnchor).isActive = true
+
+
+        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+
+        animationView.play(fromProgress: 0,
+                           toProgress: 1,
+                           loopMode: LottieLoopMode.playOnce,
+                           completion: { (finished) in
+                            if finished {
+                              print("Animation Complete")
+                            } else {
+                              print("Animation cancelled")
+                            }
+                            animationView.removeFromSuperview()
+        })
     }
     
     @IBAction func clickVoltar(_ sender: Any) {
