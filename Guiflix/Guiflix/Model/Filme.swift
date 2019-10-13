@@ -24,6 +24,3 @@ struct Filme: Codable{
     public var release_date: String?
     public var isFavorite: Bool?
 }
-
-
-
