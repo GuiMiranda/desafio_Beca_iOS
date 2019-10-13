@@ -22,13 +22,6 @@ class GuiflixTests: XCTestCase {
 
     func testExample() {
 
-        getPopularMovies(params: nil, successHandler: { [unowned self] (response) in
-           
-        }) { [unowned self] (error) in
-           
-        }
-            
-       
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
