@@ -91,6 +91,10 @@ func getPoster(poster_path: String, imagem: @escaping completionImage){
     }
 }
 
+func arredondarNota(_ nota: CDouble) -> Double{
+    return Double(round(100*nota)/100)
+}
+
 extension String {
 
     func toDate(withFormat format: String = "yyyy-MM-dd")-> Date? {
@@ -122,6 +126,8 @@ enum imageSize: Int{
     case w500 = 500
     case w780 = 780
 }
+
+
 
 extension UIImageView {
     
