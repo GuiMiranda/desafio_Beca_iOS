@@ -30,6 +30,8 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
         commonInit()
         carregarDados(pag: 0)
         filmeSearch.delegate = self
+        filmeSearch.searchTextField.textColor = UIColor.white
+        filmeSearch.tintColor = .white
         grid.alwaysBounceVertical = true
     }
     
@@ -124,21 +126,31 @@ extension FilmesView: UICollectionViewDelegate, UICollectionViewDataSource {
 
     }
 }
-    
-    
+
     
     extension FilmesView: UISearchBarDelegate {
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             if searchText.isEmpty {
                 searching = false
+
                 grid.reloadData()
             } else if searchText == " " {
                 filmeSearch.text = ""
             } else {
-                guard let filtrados = filmes?.results?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false}) else {return}
-                filmesFiltrados = filtrados
-                searching = true
-                grid.reloadData()
+                let api = APIService()
+                api.getSearchFilmes(pagina: 0, query: filmeSearch.text!, success: { (FilmesResponse) in
+                    self.filmesFiltrados = FilmesResponse.results!
+                    self.searching = true
+                    self.grid.reloadData()
+                }) { (mensagem) in
+                    self.searching = false
+                    self.grid.reloadData()
+                }
+                
+//                guard let filtrados = filmes?.results?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false}) else {return}
+//                filmesFiltrados = filtrados
+//                searching = true
+//                grid.reloadData()
             }
         }
         
