@@ -52,13 +52,7 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
                               print("Animation cancelled")
                             }
                             animationView.removeFromSuperview()
-                            
-                            let alert = UIAlertController(title: nil, message: "Você ainda não adicionou nenhum filme como favorito", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction.init(title: "Adicionar agora", style: .default, handler: { (a) in
-                                AppDelegate.addFavorito = true
-                                self.tabBarController?.selectedIndex = 0
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            self.tabBarController?.selectedIndex = 0
         })
     }
     

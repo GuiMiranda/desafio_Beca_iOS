@@ -63,7 +63,7 @@
                                         <constraint firstAttribute="width" secondItem="8IR-Qx-Qwa" secondAttribute="height" multiplier="1:1.12" id="Z7f-Me-0fP"/>
                                     </constraints>
                                 </imageView>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-Nq-ThJ" userLabel="Sinopse - conteudo">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-Nq-ThJ" userLabel="Sinopse - conteudo">
                                     <rect key="frame" x="20" y="362.5" width="280" height="100"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <constraints>
