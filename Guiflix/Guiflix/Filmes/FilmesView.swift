@@ -83,7 +83,12 @@ extension FilmesView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetalhesViewController(nibName: "DetalhesView", bundle: nil)
-        vc.filme = filmes?.results?[indexPath.row]
+        guard let filmeOriginal = filmes?.results?[indexPath.row] else {fatalError()}
+        if searching {
+            vc.filme = filmesFiltrados[indexPath.row]
+        } else {
+            vc.filme = filmeOriginal
+        }
         self.present(vc, animated: true, completion: nil)
     }
 }
