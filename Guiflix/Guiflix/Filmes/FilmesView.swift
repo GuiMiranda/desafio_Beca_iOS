@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var grid: UICollectionView!
@@ -17,13 +18,17 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
     let filmesCellidentifier = "filmesCell"
     var filmes: FilmesResponse?
     var filmesFiltrados: [Filme] = []
+    var filmesResultados: [Filme] = []
     var searching = false
+    var fetchingMore = false
+    var paginaAPI = 2
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-        carregarDados()
+        carregarDados(pag: 0)
         filmeSearch.delegate = self
         grid.alwaysBounceVertical = true
     }
@@ -34,10 +39,21 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
         grid.dataSource = self
     }
     
-    func carregarDados(){
+    func carregarDados(pag : Int) {
         let api = APIService()
-        api.getPopularFilmes(pagina: 0, success: { (response) in
-            self.filmes = response
+        api.getPopularFilmes(pagina: pag, success: { (response) in
+   
+            if pag == 0 {
+                self.filmes = response
+            } else {
+                self.filmesResultados = (self.filmes?.results)!
+                self.filmesResultados.append(contentsOf: response.results!)
+                self.filmes?.results = self.filmesResultados
+                self.paginaAPI += 1
+            }
+            
+           
+            
             self.grid.reloadData()
         }) { (erro) in
             let alert = UIAlertController(title: "Erro", message: "Erro ao carregar a lista", preferredStyle: .alert)
@@ -45,6 +61,7 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
             alert.addAction(button)
             self.present(alert, animated: true, completion: nil)
         }
+       
     }
     
     private func commonInit() {
@@ -77,6 +94,7 @@ extension FilmesView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetalhesViewController(nibName: "DetalhesView", bundle: nil)
+        
         guard let filmeOriginal = filmes?.results?[indexPath.row] else {fatalError()}
         if searching {
             vc.filme = filmesFiltrados[indexPath.row]
@@ -85,31 +103,54 @@ extension FilmesView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         self.present(vc, animated: true, completion: nil)
     }
-}
+    func scrollViewDidScroll(_ scrollView:UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.height {
+            if !fetchingMore {
+                beginBatchFetched()
+            }
+        }
+    }
+    func beginBatchFetched(){
+        fetchingMore = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.carregarDados(pag: self.paginaAPI)
+            self.fetchingMore = false
 
-extension FilmesView: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            searching = false
-            grid.reloadData()
-        } else if searchText == " " {
-            filmeSearch.text = ""
-        } else {
-            guard let filtrados = filmes?.results?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false}) else {return}
-            filmesFiltrados = filtrados
-            searching = true
-            grid.reloadData()
-        }
+        })
+        
+
     }
+}
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if filmeSearch.text!.isEmpty{
-            filmeSearch.endEditing(true)
-        } else {
-        searching = false
-        filmeSearch.text = ""
-        grid.reloadData()
-        filmeSearch.endEditing(true)
+    
+    
+    extension FilmesView: UISearchBarDelegate {
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.isEmpty {
+                searching = false
+                grid.reloadData()
+            } else if searchText == " " {
+                filmeSearch.text = ""
+            } else {
+                guard let filtrados = filmes?.results?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false}) else {return}
+                filmesFiltrados = filtrados
+                searching = true
+                grid.reloadData()
+            }
         }
-    }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            if filmeSearch.text!.isEmpty{
+                filmeSearch.endEditing(true)
+            } else {
+                searching = false
+                filmeSearch.text = ""
+                grid.reloadData()
+                filmeSearch.endEditing(true)
+            }
+        }
+        
 }
