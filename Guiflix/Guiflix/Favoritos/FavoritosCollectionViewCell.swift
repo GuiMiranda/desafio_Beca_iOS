@@ -14,6 +14,8 @@ class FavoritosCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favTitle: UILabel!
     @IBOutlet weak var favYear: UILabel!
     
+    
+    
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
@@ -22,6 +24,7 @@ class FavoritosCollectionViewCell: UICollectionViewCell {
 
         favPoster.layer.cornerRadius = 5.0
         favPoster.layer.masksToBounds = true
+        
     }
     
     func setup(filme : Filme){
