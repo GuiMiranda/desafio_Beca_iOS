@@ -123,6 +123,7 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetalhesViewController(nibName: "DetalhesView", bundle: nil)
         vc.filme = filmes[indexPath.row]
+        
         self.present(vc, animated: true, completion: nil)
     }
     
