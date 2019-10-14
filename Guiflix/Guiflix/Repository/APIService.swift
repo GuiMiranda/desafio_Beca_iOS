@@ -54,6 +54,47 @@ class APIService {
                 }
         }.resume()
     }
+    func getSearchFilmes(pagina: Int, query: String, success: @escaping ListSuccess,  failure: @escaping ListError) {
+          
+          let url: URL?
+          if pagina != 0{
+               url = URL(string: "\(URL_BASE_API_SEARCH)\(API_KEY)&page=\(pagina)&query=\(query)")
+          }else{
+               url = URL(string: "\(URL_BASE_API_SEARCH)\(API_KEY)&query=\(query)")
+          }
+          
+          guard let urlOK = url else {
+              return
+          }
+    
+          let session = URLSession.shared
+          session.dataTask(with: urlOK) {data, response, error in
+              if error != nil {
+                   print(error!.localizedDescription)
+               }
+               guard let data = data else { return }
+                  do {
+                      let filmesResponse = try JSONDecoder().decode(FilmesResponse.self, from: data)
+                      DispatchQueue.main.async {
+                          let response = filmesResponse
+                          let filmesAPI = response.results
+                          let favorities = FavoritosRepository.getInstance().listMovies()
+                         
+                          for var filme in filmesAPI ?? []{
+                              filme.isFavorite = false
+                              for favorito in favorities{
+                                  if filme.id == favorito.id{
+                                      filme.isFavorite = true
+                                  }
+                              }
+                          }
+                          success(response)
+                      }
+                  } catch {
+                      failure("JSON error: \(error.localizedDescription)")
+                  }
+          }.resume()
+      }
 }
         
 
