@@ -126,8 +126,10 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
     }
-    
+
 }
+
+
 
 extension favoritesViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

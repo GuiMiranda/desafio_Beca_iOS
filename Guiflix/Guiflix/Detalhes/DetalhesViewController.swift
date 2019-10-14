@@ -48,7 +48,7 @@ class DetalhesViewController: UIViewController {
         navigationBar.title = filmeOK.title
         navigationBar.leftBarButtonItem?.tintColor = .white
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
-        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filmeOK.vote_average!)/100)))
+        notaLabel.text = String.localizedStringWithFormat(notaString, String(arredondarNota(filmeOK.vote_average!)))
         sinopseTextField.text = filmeOK.overview
 
         generoTextField.text = getGenres(idsGenre: filmeOK.genre_ids)
