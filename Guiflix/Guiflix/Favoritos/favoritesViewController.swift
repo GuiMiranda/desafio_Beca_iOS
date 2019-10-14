@@ -9,7 +9,15 @@
 import UIKit
 import Lottie
 
-class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+protocol favoritosDelegate: class {
+    func doSomenthing()
+}
+
+class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout, favoritosDelegate {
+    func doSomenthing() {
+        loadFilme()
+    }
+    
     
     @IBOutlet weak var favSearch: UISearchBar!
     @IBOutlet weak var favGrid: UICollectionView!
@@ -121,6 +129,7 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         } else {
             vc.filme = filmes[indexPath.row]
         }
+        vc.delegate = self
         self.present(vc, animated: true, completion: nil)
     }
     
