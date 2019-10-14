@@ -13,18 +13,19 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var grid: UICollectionView!
     @IBOutlet weak var filmeSearch: UISearchBar!
     
-    
     let tela = "FilmesCollectionViewCell"
     let filmesCellidentifier = "filmesCell"
     var filmes: FilmesResponse?
     var filmesFiltrados: [Filme] = []
     var searching = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
         carregarDados()
         filmeSearch.delegate = self
+        grid.alwaysBounceVertical = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

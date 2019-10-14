@@ -27,7 +27,7 @@
                         <constraint firstAttribute="height" constant="44" id="ycM-J3-Gid"/>
                     </constraints>
                     <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    <offsetWrapper key="searchTextPositionAdjustment" horizontal="100" vertical="0.0"/>
+                    <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     <textInputTraits key="textInputTraits"/>
                     <scopeButtonTitles>
                         <string>Title</string>

@@ -16,6 +16,7 @@ class DetalhesViewController: UIViewController {
     private let imagemFavoritado = UIImage(named: "favorite_black_24pt")
     private let favoritosRepository = FavoritosRepository.getInstance()
     var favorito = false
+    var delegate: favoritosDelegate?
     
     //iboutlets de variaveis
     @IBOutlet weak var voltarButton: UIBarButtonItem!
@@ -44,6 +45,10 @@ class DetalhesViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.doSomenthing()
     }
     
     private func popularCamposFilme(){
