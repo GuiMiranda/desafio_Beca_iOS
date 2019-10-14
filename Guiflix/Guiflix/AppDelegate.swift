@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var player:AVAudioPlayer!
-    
-    static var addFavorito = false
 
     func Play(){
         SetSessionPlayerOn()
