@@ -36,16 +36,6 @@ class DetalhesViewController: UIViewController {
         preencherAcessibilidade()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Estamos quase lá, agora toque no coração", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     private func popularCamposFilme(){
         guard let filmeOK = self.filme else{
             fatalError("Erro ao mostrar detalhes do filme selecionado")
@@ -80,18 +70,7 @@ class DetalhesViewController: UIViewController {
             favoritoButton.image = imagemFavoritado
             favorito=true
             favoritosRepository.add(filme: filme)
-            addSucesso()
             addFavoriteAnimation()
-        }
-    }
-    
-    func addSucesso() {
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Muito bom, agora você já tem o seu primeiro filme favorito", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-                AppDelegate.addFavorito = false
-            }))
-            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -102,7 +81,7 @@ class DetalhesViewController: UIViewController {
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
         posterImage.addSubview(animationView)
-
+        
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.centerYAnchor.constraint(equalTo: posterImage.centerYAnchor).isActive = true

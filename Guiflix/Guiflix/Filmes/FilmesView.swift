@@ -28,13 +28,6 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
         grid.register(UINib(nibName: tela, bundle: nil), forCellWithReuseIdentifier: filmesCellidentifier)
         grid.delegate = self
         grid.dataSource = self
-        
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Selecione um filme para adicionar como favorito", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
     }
     
     func carregarDados(){
