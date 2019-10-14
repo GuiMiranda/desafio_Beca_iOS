@@ -20,14 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWT-fY-zcI">
+                <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWT-fY-zcI">
                     <rect key="frame" x="0.0" y="52" width="414" height="44"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="ycM-J3-Gid"/>
                     </constraints>
                     <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    <offsetWrapper key="searchTextPositionAdjustment" horizontal="100" vertical="0.0"/>
+                    <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     <textInputTraits key="textInputTraits"/>
                     <scopeButtonTitles>
                         <string>Title</string>

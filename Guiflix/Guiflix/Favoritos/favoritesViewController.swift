@@ -9,7 +9,15 @@
 import UIKit
 import Lottie
 
-class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+protocol favoritosDelegate: class {
+    func doSomenthing()
+}
+
+class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLayout, favoritosDelegate {
+    func doSomenthing() {
+        loadFilme()
+    }
+    
     
     @IBOutlet weak var favSearch: UISearchBar!
     @IBOutlet weak var favGrid: UICollectionView!
@@ -44,13 +52,7 @@ class favoritesViewController: UIViewController, UICollectionViewDelegateFlowLay
                               print("Animation cancelled")
                             }
                             animationView.removeFromSuperview()
-                            
-                            let alert = UIAlertController(title: nil, message: "Você ainda não adicionou nenhum filme como favorito", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction.init(title: "Adicionar agora", style: .default, handler: { (a) in
-                                AppDelegate.addFavorito = true
-                                self.tabBarController?.selectedIndex = 0
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            self.tabBarController?.selectedIndex = 0
         })
     }
     
@@ -121,6 +123,7 @@ extension favoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         } else {
             vc.filme = filmes[indexPath.row]
         }
+        vc.delegate = self
         self.present(vc, animated: true, completion: nil)
     }
 

@@ -14,7 +14,6 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var grid: UICollectionView!
     @IBOutlet weak var filmeSearch: UISearchBar!
     
-    
     let tela = "FilmesCollectionViewCell"
     let filmesCellidentifier = "filmesCell"
     var filmes: FilmesResponse?
@@ -25,24 +24,19 @@ class FilmesView: UIViewController, UICollectionViewDelegateFlowLayout {
     var paginaAPI = 2
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
         carregarDados(pag: 0)
         filmeSearch.delegate = self
+        grid.alwaysBounceVertical = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         grid.register(UINib(nibName: tela, bundle: nil), forCellWithReuseIdentifier: filmesCellidentifier)
         grid.delegate = self
         grid.dataSource = self
-        
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Selecione um filme para adicionar como favorito", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
     }
     
     func carregarDados(pag : Int) {

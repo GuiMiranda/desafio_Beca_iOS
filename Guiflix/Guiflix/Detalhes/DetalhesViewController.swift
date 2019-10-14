@@ -16,6 +16,7 @@ class DetalhesViewController: UIViewController {
     private let imagemFavoritado = UIImage(named: "favorite_black_24pt")
     private let favoritosRepository = FavoritosRepository.getInstance()
     var favorito = false
+    var delegate: favoritosDelegate?
     
     //iboutlets de variaveis
     @IBOutlet weak var voltarButton: UIBarButtonItem!
@@ -35,15 +36,9 @@ class DetalhesViewController: UIViewController {
         preencherLabels()
         preencherAcessibilidade()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Estamos quase lá, agora toque no coração", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.doSomenthing()
     }
     
     private func popularCamposFilme(){
@@ -53,7 +48,7 @@ class DetalhesViewController: UIViewController {
         navigationBar.title = filmeOK.title
         navigationBar.leftBarButtonItem?.tintColor = .white
         let notaString = NSLocalizedString("detalhes.nota", comment: "")
-        notaLabel.text = String.localizedStringWithFormat(notaString, String(Double(round(100*filmeOK.vote_average!)/100)))
+        notaLabel.text = String.localizedStringWithFormat(notaString, String(arredondarNota(filmeOK.vote_average!)))
         sinopseTextField.text = filmeOK.overview
 
         generoTextField.text = getGenres(idsGenre: filmeOK.genre_ids)
@@ -80,18 +75,7 @@ class DetalhesViewController: UIViewController {
             favoritoButton.image = imagemFavoritado
             favorito=true
             favoritosRepository.add(filme: filme)
-            addSucesso()
             addFavoriteAnimation()
-        }
-    }
-    
-    func addSucesso() {
-        if (AppDelegate.addFavorito) {
-            let alert = UIAlertController(title: nil, message: "Muito bom, agora você já tem o seu primeiro filme favorito", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (a) in
-                AppDelegate.addFavorito = false
-            }))
-            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -102,7 +86,7 @@ class DetalhesViewController: UIViewController {
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
         posterImage.addSubview(animationView)
-
+        
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.centerYAnchor.constraint(equalTo: posterImage.centerYAnchor).isActive = true
